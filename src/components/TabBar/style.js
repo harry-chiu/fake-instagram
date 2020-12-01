@@ -21,6 +21,6 @@ export const IconWrapper = styled.div`
   padding: 12px 0;
 
   & > svg {
-    font-size: 20px;
+    font-size: 28px;
   }
 `;
