@@ -24,19 +24,19 @@ const TabBar = () => {
 
   return (
     <Container>
-      <IconWrapper onClick={handleNavigate('home')}>
-        {pathname === '/home' ? <HomeFillIcon /> : <HomeOutlineIcon />}
+      <IconWrapper onClick={handleNavigate('/')}>
+        {pathname === '/' ? <HomeFillIcon /> : <HomeOutlineIcon />}
       </IconWrapper>
-      <IconWrapper onClick={handleNavigate('search')}>
+      <IconWrapper onClick={handleNavigate('/search')}>
         {pathname === '/search' ? <SearchSharpIcon /> : <SearchOutlineIcon />}
       </IconWrapper>
       <IconWrapper>
         <AddIcon />
       </IconWrapper>
-      <IconWrapper onClick={handleNavigate('heart')}>
+      <IconWrapper onClick={handleNavigate('/heart')}>
         {pathname === '/heart' ? <HeartFillIcon /> : <HeartOutlineIcon />}
       </IconWrapper>
-      <IconWrapper onClick={handleNavigate('user')}>
+      <IconWrapper onClick={handleNavigate('/user')}>
         {pathname === '/user' ? <UserFillIcon /> : <UserOutlineIcon />}
       </IconWrapper>
     </Container>

@@ -8,8 +8,8 @@ export const Container = styled.div`
 
 export const ImageWrapper = styled.div`
   position: relative;
-  width: 36px;
-  height: 36px;
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
   border-radius: 50%;
   background: linear-gradient(
     45deg,
@@ -25,8 +25,8 @@ export const Image = styled.img`
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 32px;
-  height: 32px;
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
   border-radius: 50%;
   font-size: 0;
   background: #c0c0c0;

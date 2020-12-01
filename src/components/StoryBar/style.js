@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   max-width: 100vw;
+  min-height: 74px;
   padding: 8px 0;
   overflow-x: auto;
   border-bottom: 1px solid #202020;

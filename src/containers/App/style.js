@@ -13,4 +13,6 @@ export const MobileView = styled.div`
 
 export const SafeArea = styled.div`
   flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
