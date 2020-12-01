@@ -8,6 +8,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   min-height: 44px;
+  padding-bottom: 16px;
   background: #020202;
   z-index: 99;
 `;

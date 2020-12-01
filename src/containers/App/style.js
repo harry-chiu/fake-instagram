@@ -11,7 +11,7 @@ export const MobileView = styled.div`
 `;
 
 export const SafeArea = styled.div`
-  padding-top: 118px;
+  padding-top: 130px;
   min-height: 100vh;
   max-height: 100vh;
   overflow-x: hidden;
