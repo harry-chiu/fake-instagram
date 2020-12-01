@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 const ENV = process.env.NODE_ENV;
-const BASEPATH = ENV === 'production' ? '/fake-instagram/' : '/';
+const BASEPATH = ENV === 'production' ? '/fake-instagram' : '/';
 
 module.exports = {
   // Application 入口

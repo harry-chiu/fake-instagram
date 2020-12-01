@@ -24,7 +24,7 @@ const TabBar = () => {
 
   return (
     <Container>
-      <IconWrapper onClick={handleNavigate('')}>
+      <IconWrapper onClick={handleNavigate('/')}>
         {pathname === '/' ? <HomeFillIcon /> : <HomeOutlineIcon />}
       </IconWrapper>
       <IconWrapper onClick={handleNavigate('/search')}>
