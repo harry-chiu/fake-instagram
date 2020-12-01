@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
     color: #ffffff;
     background: #000000;
   }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export default GlobalStyle;
