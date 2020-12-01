@@ -1,9 +1,9 @@
 {
-  "name": "Webpack React Starter",
-  "short_name": "React Starter",
-  "start_url": "/?source=pwa",
+  "name": "Fake Instagram",
+  "short_name": "Fake Instagram",
+  "start_url": "/fake-instagram/?source=pwa",
   "display": "standalone",
-  "scope": "/",
+  "scope": "/fake-instagram/",
   "icons": [
     {
       "src": "./icon.png",
