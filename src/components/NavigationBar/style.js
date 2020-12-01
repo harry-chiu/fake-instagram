@@ -8,7 +8,7 @@ export const Container = styled.div`
   background: #020202;
 
   & > svg {
-    font-size: 20px;
+    font-size: 24px;
   }
 `;
 
