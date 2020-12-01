@@ -8,6 +8,13 @@ import GlobalStyle from 'components/GlobalStyle';
 import NavigationBar from 'components/NavigationBar';
 import { MobileView, SafeArea } from './style';
 
+const navigationBarHeight = 44;
+const storyBarHeight = 74;
+const tabBarHeight = 44;
+const deviceHeight = window.outerHeight;
+const safeAreaHeight =
+  deviceHeight - navigationBarHeight - storyBarHeight - tabBarHeight;
+
 const App = () => (
   <Location>
     {({ location }) => (
@@ -15,7 +22,7 @@ const App = () => (
         <GlobalStyle />
         <NavigationBar />
         <StoryBar />
-        <SafeArea>
+        <SafeArea height={safeAreaHeight}>
           <Router basepath={BASEPATH} location={location}>
             <Home path="/" />
             <Login path="login" />

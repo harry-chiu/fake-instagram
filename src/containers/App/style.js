@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const MobileView = styled.div`
-  display: flex;
-  flex-direction: column;
   margin: auto;
   width: 100%;
   max-width: 520px;
@@ -12,7 +10,7 @@ export const MobileView = styled.div`
 `;
 
 export const SafeArea = styled.div`
-  flex: 1;
+  height: ${({ height }) => height}px;
   overflow-x: hidden;
   overflow-y: auto;
 `;
