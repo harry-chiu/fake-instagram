@@ -3,6 +3,7 @@ const { DefinePlugin } = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
+const ENV = process.env.NODE_ENV;
 const BASEPATH = ENV === 'production' ? '/fake-instagram/' : '/';
 
 module.exports = {
@@ -81,7 +82,7 @@ module.exports = {
             // -> 編譯及壓縮圖片
             loader: 'image-webpack-loader',
             options: {
-              disable: process.env.NODE_ENV === 'production' ? false : true,
+              disable: ENV === 'production' ? false : true,
               // JPEG 優化
               mozjpeg: {
                 progressive: true,
@@ -139,7 +140,7 @@ module.exports = {
 
     // 全域變數 插件
     new DefinePlugin({
-      ENV: JSON.stringify(process.env.NODE_ENV),
+      ENV: JSON.stringify(ENV),
       BASEPATH: JSON.stringify(BASEPATH),
     }),
 
