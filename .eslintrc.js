@@ -15,5 +15,6 @@ module.exports = {
   plugins: ['react'],
   globals: {
     ENV: true,
+    BASEPATH: true,
   },
 };

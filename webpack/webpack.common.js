@@ -3,6 +3,8 @@ const { DefinePlugin } = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
+const BASEPATH = ENV === 'production' ? '/fake-instagram/' : '/';
+
 module.exports = {
   // Application 入口
   entry: path.resolve(__dirname, '../src/index.js'),
@@ -138,6 +140,7 @@ module.exports = {
     // 全域變數 插件
     new DefinePlugin({
       ENV: JSON.stringify(process.env.NODE_ENV),
+      BASEPATH: JSON.stringify(BASEPATH),
     }),
 
     // Copy 插件

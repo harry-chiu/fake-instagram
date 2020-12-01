@@ -20,11 +20,11 @@ const TabBar = () => {
   const location = useLocation();
   const pathname = get(location, 'pathname');
 
-  const handleNavigate = path => () => navigate(path);
+  const handleNavigate = path => () => navigate(BASEPATH + path);
 
   return (
     <Container>
-      <IconWrapper onClick={handleNavigate('/')}>
+      <IconWrapper onClick={handleNavigate('')}>
         {pathname === '/' ? <HomeFillIcon /> : <HomeOutlineIcon />}
       </IconWrapper>
       <IconWrapper onClick={handleNavigate('/search')}>
