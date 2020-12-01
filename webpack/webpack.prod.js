@@ -16,7 +16,7 @@ module.exports = merge(webpackCommon, {
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].chunk.js',
-    publicPath: '/',
+    publicPath: '/fake-instagram/',
   },
 
   // 優化設定

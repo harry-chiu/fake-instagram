@@ -8,6 +8,8 @@ import GlobalStyle from 'components/GlobalStyle';
 import NavigationBar from 'components/NavigationBar';
 import { MobileView, SafeArea } from './style';
 
+const basepath = ENV === 'production' ? '/fake-instagram/' : '/';
+
 const App = () => (
   <Location>
     {({ location }) => (
@@ -16,7 +18,7 @@ const App = () => (
         <NavigationBar />
         <StoryBar />
         <SafeArea>
-          <Router basepath="/" location={location}>
+          <Router basepath={basepath} location={location}>
             <Home path="/" />
             <Login path="login" />
           </Router>
