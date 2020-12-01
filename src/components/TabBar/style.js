@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 44px;
   background: #020202;
+  z-index: 99;
 `;
 
 export const IconWrapper = styled.div`
