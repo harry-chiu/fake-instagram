@@ -23,7 +23,7 @@ import {
   Content,
 } from './style';
 
-const Card = ({ likes, account, content }) => (
+const Card = ({ likes, account, content, imageSrc }) => (
   <Container>
     <Header>
       <Avatar size={24} />
@@ -34,7 +34,7 @@ const Card = ({ likes, account, content }) => (
     </Header>
     <Body>
       <ImageWrapper>
-        <Image src={PlaceholderSvg} alt="" />
+        <Image src={imageSrc || PlaceholderSvg} alt="" />
       </ImageWrapper>
       <FeatureBar>
         <MainFeature>
@@ -61,6 +61,7 @@ Card.propTypes = {
   likes: PropTypes.number,
   account: PropTypes.string,
   content: PropTypes.string,
+  imageSrc: PropTypes.string,
 };
 
 export default Card;
