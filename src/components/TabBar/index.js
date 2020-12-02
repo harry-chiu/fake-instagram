@@ -28,6 +28,8 @@ const TabBar = () => {
   const location = useLocation();
   const pathname = get(location, 'pathname');
 
+  const pathEquals = path => BASEPATH + path === pathname;
+
   const handleNavigate = path => () => navigate(BASEPATH + path);
 
   const showSuccessMessage = () => {
@@ -70,19 +72,19 @@ const TabBar = () => {
   return (
     <Container>
       <IconWrapper onClick={handleNavigate('')}>
-        {pathname === '/' ? <HomeFillIcon /> : <HomeOutlineIcon />}
+        {pathEquals('') ? <HomeFillIcon /> : <HomeOutlineIcon />}
       </IconWrapper>
       <IconWrapper onClick={handleNavigate('search')}>
-        {pathname === '/search' ? <SearchSharpIcon /> : <SearchOutlineIcon />}
+        {pathEquals('search') ? <SearchSharpIcon /> : <SearchOutlineIcon />}
       </IconWrapper>
       <IconWrapper onClick={handleAddPost}>
         <AddIcon />
       </IconWrapper>
       <IconWrapper onClick={handleNavigate('heart')}>
-        {pathname === '/heart' ? <HeartFillIcon /> : <HeartOutlineIcon />}
+        {pathEquals('heart') ? <HeartFillIcon /> : <HeartOutlineIcon />}
       </IconWrapper>
       <IconWrapper onClick={handleNavigate('user')}>
-        {pathname === '/user' ? <UserFillIcon /> : <UserOutlineIcon />}
+        {pathEquals('user') ? <UserFillIcon /> : <UserOutlineIcon />}
       </IconWrapper>
     </Container>
   );

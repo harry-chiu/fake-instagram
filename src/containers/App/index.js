@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { lazy, useState, useEffect, Suspense } from 'react';
 import { Location, Router } from '@reach/router';
 import firebase from 'firebase/app';
 import size from 'lodash/size';
-import Home from 'containers/Home';
-import Login from 'containers/Login';
 import TabBar from 'components/TabBar';
 import StoryBar from 'components/StoryBar';
 import GlobalStyle from 'components/GlobalStyle';
@@ -14,6 +12,9 @@ import showAlert from 'utils/showAlert';
 import syncPost from 'utils/syncPost';
 import { MobileView, SafeArea } from './style';
 import 'firebase/database';
+
+const Home = lazy(() => import('containers/Home'));
+const Login = lazy(() => import('containers/Login'));
 
 const App = () => {
   const [network, setNetwork] = useState(true);
@@ -69,10 +70,12 @@ const App = () => {
               <NavigationBar />
               <StoryBar />
               <SafeArea>
-                <Router basepath={BASEPATH} location={location}>
-                  <Home path="/" />
-                  <Login path="login" />
-                </Router>
+                <Suspense fallback={null}>
+                  <Router basepath={BASEPATH} location={location}>
+                    <Home path="/" />
+                    <Login path="login" />
+                  </Router>
+                </Suspense>
               </SafeArea>
               <TabBar />
             </MobileView>

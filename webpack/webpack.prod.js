@@ -101,6 +101,6 @@ module.exports = merge(webpackCommon, {
   // 性能相關
   // -> 篩選要計算性能的檔案
   performance: {
-    hints: 'error',
+    hints: 'warning',
   },
 });
