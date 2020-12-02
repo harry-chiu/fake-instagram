@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { lazy, useState, useEffect, Suspense } from 'react';
 import { Location, Router } from '@reach/router';
 import firebase from 'firebase/app';
 import size from 'lodash/size';
-import Home from 'containers/Home';
-import Login from 'containers/Login';
 import TabBar from 'components/TabBar';
 import StoryBar from 'components/StoryBar';
 import GlobalStyle from 'components/GlobalStyle';
 import NavigationBar from 'components/NavigationBar';
 import PostContext from 'context/PostContext';
 import NetworkContext from 'context/NetworkContext';
+import showModal from 'utils/showModal';
 import showAlert from 'utils/showAlert';
 import syncPost from 'utils/syncPost';
 import { MobileView, SafeArea } from './style';
 import 'firebase/database';
 
+const Home = lazy(() => import('containers/Home'));
+const Login = lazy(() => import('containers/Login'));
+
 const App = () => {
-  const [network, setNetwork] = useState(true);
+  const [network, setNetwork] = useState(window.navigator.onLine);
   const [postList, setPostList] = useState([]);
   const [triggerUpdate, setTriggerUpdate] = useState(false);
 
@@ -59,6 +61,22 @@ const App = () => {
       .catch(console.log);
   }, [network, triggerUpdate]);
 
+  useEffect(() => {
+    const installPWA = event => {
+      event.preventDefault();
+
+      setTimeout(() => {
+        showModal({ onConfirm: () => event.prompt() });
+      }, 3000);
+    };
+
+    window.addEventListener('beforeinstallprompt', installPWA);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', installPWA);
+    };
+  }, []);
+
   return (
     <NetworkContext.Provider value={network}>
       <PostContext.Provider value={{ postList, updatePosts }}>
@@ -69,10 +87,12 @@ const App = () => {
               <NavigationBar />
               <StoryBar />
               <SafeArea>
-                <Router basepath={BASEPATH} location={location}>
-                  <Home path="/" />
-                  <Login path="login" />
-                </Router>
+                <Suspense fallback={null}>
+                  <Router basepath={BASEPATH} location={location}>
+                    <Home path="/" />
+                    <Login path="login" />
+                  </Router>
+                </Suspense>
               </SafeArea>
               <TabBar />
             </MobileView>

@@ -150,8 +150,16 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, '../public/icon.png'),
-          to: path.resolve(__dirname, '../build/icon.png'),
+          from: path.resolve(__dirname, '../public/icon-64x64.png'),
+          to: path.resolve(__dirname, '../build/icon-64x64.png'),
+        },
+        {
+          from: path.resolve(__dirname, '../public/icon-192x192.png'),
+          to: path.resolve(__dirname, '../build/icon-192x192.png'),
+        },
+        {
+          from: path.resolve(__dirname, '../public/icon-512x512.png'),
+          to: path.resolve(__dirname, '../build/icon-512x512.png'),
         },
         {
           from: path.resolve(__dirname, '../public/manifest.json'),

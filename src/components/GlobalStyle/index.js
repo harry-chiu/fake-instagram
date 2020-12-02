@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
     &:focus {
       outline: none;
     } 
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   html, body {
@@ -15,10 +19,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     color: #ffffff;
     background: #000000;
-  }
-
-  ::-webkit-scrollbar {
-    display: none;
+    overflow: hidden;
   }
 `;
 
