@@ -4,7 +4,8 @@ export const Container = styled.div`
   position: fixed;
   top: 44px;
   display: flex;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 520px;
   min-height: 74px;
   padding: 8px 0;
   border-bottom: 1px solid #202020;

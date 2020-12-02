@@ -1,22 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import firebase from 'firebase/app';
+import size from 'lodash/size';
 import Card from 'components/Card';
 import { Container } from './style';
+import 'firebase/database';
 
-const Home = () => (
-  <Container>
-    <Card
-      likes={59}
-      account="hellohi1106"
-      content="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32."
-      imageSrc="https://picsum.photos/400/300"
-    />
-    <Card
-      likes={59}
-      account="hellohi1106"
-      content="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32."
-      imageSrc="https://picsum.photos/400/300"
-    />
-  </Container>
-);
+const Home = () => {
+  const [postList, setPostList] = useState([]);
+
+  useEffect(() => {
+    firebase
+      .database()
+      .ref('/ig/posts')
+      .once('value', snapshot => {
+        const postListFromDatabase = snapshot.val();
+        if (!postListFromDatabase || !size(postListFromDatabase)) return;
+
+        setPostList(postListFromDatabase);
+      });
+  }, []);
+
+  return (
+    <Container>
+      {postList &&
+        postList.map((post, index) => (
+          <Card
+            key={`post-${index}`}
+            likes={post.likes}
+            account={post.account}
+            content={post.content}
+            imageSrc="https://picsum.photos/400/300"
+          />
+        ))}
+    </Container>
+  );
+};
 
 export default Home;
