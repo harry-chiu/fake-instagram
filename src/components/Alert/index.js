@@ -5,7 +5,7 @@ import { Container } from './style';
 const Alert = ({ children }) => {
   const containerRef = useRef(null);
   const [isShow, setIsShow] = useState(true);
-  const [network, setNetwork] = useState(false);
+  const [network, setNetwork] = useState(window.navigator.onLine);
 
   const handleOnline = () => setNetwork(true);
   const handleOffline = () => setNetwork(false);

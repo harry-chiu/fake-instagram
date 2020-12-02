@@ -17,7 +17,7 @@ const Home = lazy(() => import('containers/Home'));
 const Login = lazy(() => import('containers/Login'));
 
 const App = () => {
-  const [network, setNetwork] = useState(true);
+  const [network, setNetwork] = useState(window.navigator.onLine);
   const [postList, setPostList] = useState([]);
   const [triggerUpdate, setTriggerUpdate] = useState(false);
 
