@@ -6,9 +6,19 @@
   "scope": "/fake-instagram/",
   "icons": [
     {
-      "src": "./icon.png",
+      "src": "./icon-64x64.png",
       "type": "image/png",
       "size": "64x64"
+    },
+    {
+      "src": "./icon-192x192.png",
+      "type": "image/png",
+      "size": "192x192"
+    },
+    {
+      "src": "./icon-512x512.png",
+      "type": "image/png",
+      "size": "512x512"
     }
   ]
 }
