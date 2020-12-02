@@ -15,6 +15,7 @@ export const Container = styled.div`
   left: 50%;
   bottom: 64px;
   padding: 8px 16px;
+  padding-bottom: env(safe-area-inset-bottom);
   display: flex;
   align-items: center;
   color: #ffffff;
