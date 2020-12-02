@@ -81,6 +81,7 @@ export const Content = styled.p`
   margin: 0;
   padding: 0 16px;
   font-size: 13px;
+  white-space: pre-line;
 
   & > span {
     padding: 0 8px 0 0;
