@@ -15,17 +15,25 @@ import {
   RiUserLine as UserOutlineIcon,
 } from 'react-icons/ri';
 import { CgAddR as AddIcon } from 'react-icons/cg';
+import PostContext from 'context/PostContext';
 import NetworkContext from 'context/NetworkContext';
 import storePost from 'utils/storePost';
+import showMessage from 'utils/showMessage';
 import { Container, IconWrapper } from './style';
 import 'firebase/database';
 
 const TabBar = () => {
   const network = useContext(NetworkContext);
+  const { updatePosts } = useContext(PostContext);
   const location = useLocation();
   const pathname = get(location, 'pathname');
 
   const handleNavigate = path => () => navigate(BASEPATH + path);
+
+  const showSuccessMessage = () => {
+    if (network) showMessage('新增貼文成功');
+    else showMessage('目前沒有網路連線\n貼文會在重新連線後發送');
+  };
 
   const handleAddPost = () => {
     const newPost = {
@@ -34,8 +42,29 @@ const TabBar = () => {
       likes: new Date().getSeconds(),
     };
 
-    if (network) firebase.database().ref('/posts').update(newPost);
-    else storePost(newPost);
+    const addNewPost = snapshot => {
+      const postListFromFirebase = snapshot.val() || [];
+
+      const newPostList = [...postListFromFirebase, newPost];
+
+      firebase
+        .database()
+        .ref('/posts')
+        .set(newPostList)
+        .then(updatePosts)
+        .then(showSuccessMessage)
+        .catch(console.log);
+    };
+
+    if (network) {
+      firebase
+        .database()
+        .ref('/posts')
+        .once('value', addNewPost)
+        .catch(console.log);
+    } else {
+      storePost(newPost);
+    }
   };
 
   return (

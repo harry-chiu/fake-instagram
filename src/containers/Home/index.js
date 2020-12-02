@@ -1,24 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import firebase from 'firebase/app';
-import size from 'lodash/size';
+import React, { useContext } from 'react';
 import Card from 'components/Card';
+import PostContext from 'context/PostContext';
 import { Container } from './style';
 import 'firebase/database';
 
 const Home = () => {
-  const [postList, setPostList] = useState([]);
-
-  useEffect(() => {
-    firebase
-      .database()
-      .ref('/ig/posts')
-      .once('value', snapshot => {
-        const postListFromDatabase = snapshot.val();
-        if (!postListFromDatabase || !size(postListFromDatabase)) return;
-
-        setPostList(postListFromDatabase);
-      });
-  }, []);
+  const { postList } = useContext(PostContext);
 
   return (
     <Container>
