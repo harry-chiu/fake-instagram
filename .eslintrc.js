@@ -16,5 +16,6 @@ module.exports = {
   globals: {
     ENV: true,
     BASEPATH: true,
+    FIREBASE_CONFIG: true,
   },
 };
