@@ -16,6 +16,7 @@ const VERSION = `v-${replaceDotToDash(version)}`;
 const DAY = 24 * 60 * 60;
 
 precacheAndRoute(self.__WB_MANIFEST);
+self.skipWaiting();
 
 const includesVersion = includes(VERSION);
 

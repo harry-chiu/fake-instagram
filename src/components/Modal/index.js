@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { AiOutlinePhone as PhoneIcon } from 'react-icons/ai';
+import { AiOutlineSmile as SmileIcon } from 'react-icons/ai';
 import { Container, Wrapper, Title, Description, Button } from './style';
 
 const Modal = ({ onConfirm }) => {
@@ -26,7 +26,7 @@ const Modal = ({ onConfirm }) => {
   return (
     <Container ref={containerRef}>
       <Wrapper isShow={isShow}>
-        <PhoneIcon />
+        <SmileIcon />
         <Title>安裝至主畫面</Title>
         <Description>您好，高抬貴手按下確認</Description>
         <Button onClick={handleConfirm}>確認</Button>
