@@ -8,6 +8,7 @@ import GlobalStyle from 'components/GlobalStyle';
 import NavigationBar from 'components/NavigationBar';
 import PostContext from 'context/PostContext';
 import NetworkContext from 'context/NetworkContext';
+import showModal from 'utils/showModal';
 import showAlert from 'utils/showAlert';
 import syncPost from 'utils/syncPost';
 import { MobileView, SafeArea } from './style';
@@ -59,6 +60,22 @@ const App = () => {
       .once('value', setPostListFromFirebase)
       .catch(console.log);
   }, [network, triggerUpdate]);
+
+  useEffect(() => {
+    const installPWA = event => {
+      event.preventDefault();
+
+      setTimeout(() => {
+        showModal({ onConfirm: () => event.prompt() });
+      }, 3000);
+    };
+
+    window.addEventListener('beforeinstallprompt', installPWA);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', installPWA);
+    };
+  }, []);
 
   return (
     <NetworkContext.Provider value={network}>
