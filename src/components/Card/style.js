@@ -53,7 +53,7 @@ export const MainFeature = styled.div`
 
   & > svg {
     margin-left: 12px;
-    font-size: 20px;
+    font-size: 24px;
 
     &:first-child {
       margin-left: 0;
@@ -63,7 +63,7 @@ export const MainFeature = styled.div`
 
 export const SubFeature = styled.div`
   & > svg {
-    font-size: 20px;
+    font-size: 24px;
   }
 `;
 
@@ -81,6 +81,7 @@ export const Content = styled.p`
   margin: 0;
   padding: 0 16px;
   font-size: 13px;
+  white-space: pre-line;
 
   & > span {
     padding: 0 8px 0 0;

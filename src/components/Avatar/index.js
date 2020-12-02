@@ -20,7 +20,7 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-  size: 32,
+  size: 44,
   imageUrl: `https://image.flaticon.com/icons/png/128/924/924874.png`,
 };
 

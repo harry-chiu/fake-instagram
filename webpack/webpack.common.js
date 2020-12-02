@@ -2,6 +2,7 @@ const path = require('path');
 const { DefinePlugin } = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const { FIREBASE_CONFIG } = require('../environment.json');
 
 const ENV = process.env.NODE_ENV;
 const BASEPATH = ENV === 'production' ? '/fake-instagram' : '/';
@@ -142,6 +143,7 @@ module.exports = {
     new DefinePlugin({
       ENV: JSON.stringify(ENV),
       BASEPATH: JSON.stringify(BASEPATH),
+      FIREBASE_CONFIG: JSON.stringify(FIREBASE_CONFIG),
     }),
 
     // Copy 插件

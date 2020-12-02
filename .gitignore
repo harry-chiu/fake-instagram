@@ -6,3 +6,6 @@ node_modules
 package-lock.json
 yarn.lock
 build
+
+# 環境變數設定檔
+environment.json

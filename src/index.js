@@ -1,6 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
+import firebase from 'firebase/app';
 import App from './containers/App';
+import 'regenerator-runtime';
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(FIREBASE_CONFIG);
+}
 
 const element = <App />;
 const container = document.getElementById('root');
